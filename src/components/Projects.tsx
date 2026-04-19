@@ -31,7 +31,7 @@ export default function Projects() {
                 
                 <div className="flex items-center gap-4">
                   <a
-                    href={project.link}
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-indigo-400 transition-colors bg-slate-700/50 px-4 py-2 rounded-lg"
@@ -40,7 +40,7 @@ export default function Projects() {
                     View Source
                   </a>
                   <a
-                    href={project.link}
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
