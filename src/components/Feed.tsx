@@ -17,9 +17,9 @@ export default function Feed() {
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">Latest Updates</h2>
         <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mb-12 rounded-full"></div>
         
-        <div className="grid grid-cols-1 gap-8">
-          {blogData.map((post) => (
-            <div key={post.id} className="p-6 sm:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-indigo-500/30 transition-all group">
+               <ul className="grid grid-cols-1 gap-8">
+          {(blogData as BlogPost[]).map((post) => (
+            <li key={post.id} className="p-6 sm:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-indigo-500/30 transition-all group">
               <div className="flex items-center gap-2 text-indigo-400 mb-4">
                 <CalendarDays size={16} />
                 <span className="text-sm font-medium tracking-wide uppercase">{post.date}</span>
@@ -42,9 +42,9 @@ export default function Feed() {
                   <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
                 </a>
               )}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
