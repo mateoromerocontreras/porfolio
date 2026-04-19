@@ -2,6 +2,7 @@ import Hero from './components/Hero';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Feed from './components/Feed';
 import Contact from './components/Contact';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <li><a href="#experience" className="hover:text-indigo-400 transition-colors">Experience</a></li>
             <li><a href="#skills" className="hover:text-indigo-400 transition-colors">Skills</a></li>
             <li><a href="#projects" className="hover:text-indigo-400 transition-colors">Projects</a></li>
+            <li><a href="#updates" className="hover:text-indigo-400 transition-colors">Updates</a></li>
             <li><a href="#contact" className="hover:text-indigo-400 transition-colors">Contact</a></li>
           </ul>
         </div>
@@ -27,6 +29,7 @@ function App() {
         <Experience />
         <Skills />
         <Projects />
+        <Feed />
         <Contact />
       </main>
     </div>

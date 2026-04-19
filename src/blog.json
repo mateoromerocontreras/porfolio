@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "date": "April 19, 2026",
+    "title": "Welcome to my new Portfolio!",
+    "content": "I've just migrated my portfolio to this new React + Tailwind application. It's incredibly fast, deeply optimized, and now hosts my personal micro-blog! Expect updates on my systems analysis, Java backend configurations, and AI engineering.",
+    "link": "https://www.linkedin.com/in/mateo-romero-contreras-bb82a7206",
+    "linkText": "Follow me on LinkedIn"
+  },
+  {
+    "id": 2,
+    "date": "April 10, 2026",
+    "title": "Thoughts on Modern Java Architectural Patterns",
+    "content": "Exploring service orchestration inside Spring Boot with Google Cloud functions. Moving logic into manageable, highly scalable modules is more important than ever for backend performance. I recently posted a deep dive on how this looks in practice.",
+    "link": "https://www.linkedin.com/in/mateo-romero-contreras-bb82a7206",
+    "linkText": "Read full post on LinkedIn"
+  }
+]
