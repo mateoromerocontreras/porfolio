@@ -44,22 +44,22 @@
     {
       "name": "UTN-Conecta",
       "description": "A community-focused platform for internship management. Developed the backend in Java with Spring Boot and the client-side using React. Containerized with Docker.",
-      "link": "https://github.com/mateoromerocontreras/UTN_Conecta"
+      "githubUrl": "https://github.com/mateoromerocontreras/UTN_Conecta"
     },
     {
       "name": "Gym Flow",
       "description": "A mobile-ready application designed for fitness enthusiasts tracking workouts outdoors. Features responsive interface and social integration capabilities.",
-      "link": "https://github.com/mateoromerocontreras/gym-flow"
+      "githubUrl": "https://github.com/mateoromerocontreras/gym-flow"
     },
     {
       "name": "E-store / Bookstore Backend",
       "description": "A robust backend system built with Python, Flask/Django, and SQL. Features Role-Based Access Control (RBAC) and optimized queries for inventory management.",
-      "link": "https://github.com/mateoromerocontreras/django-bookstore"
+      "githubUrl": "https://github.com/mateoromerocontreras/django-bookstore"
     },
     {
       "name": "AI Telegram Bot",
       "description": "A Telegram bot utilizing the Gemini API for generative AI functionalities. Containerized and deployed on Google Cloud Space.",
-      "link": "https://github.com/mateoromerocontreras/gemini-telegram-bot"
+      "githubUrl": "https://github.com/mateoromerocontreras/gemini-telegram-bot"
     }
   ],
   "technicalStack": {
