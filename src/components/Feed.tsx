@@ -1,6 +1,15 @@
 import { CalendarDays, ArrowRight } from 'lucide-react';
 import blogData from '../blog.json';
 
+interface BlogPost {
+  id: number;
+  date: string;
+  title: string;
+  content: string;
+  link?: string;
+  linkText?: string;
+}
+
 export default function Feed() {
   return (
     <section id="updates" className="py-24 px-6 sm:px-12 lg:px-24 bg-slate-900/10">
