@@ -1,40 +1,152 @@
-import { Briefcase, Calendar } from 'lucide-react';
 import data from '../data.json';
 
 export default function Experience() {
   const { experience } = data;
 
   return (
-    <section id="experience" className="py-24 px-6 sm:px-12 lg:px-24">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">Experience</h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mb-12 rounded-full"></div>
-        
-        <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
-          
-          {experience.map((job, index) => (
-            <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-              
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-indigo-500 text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                <Briefcase size={16} className="text-white" />
-              </div>
-              
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-indigo-500/50 transition-colors backdrop-blur-sm">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
-                  <h3 className="font-bold text-xl text-slate-100">{job.role}</h3>
-                  <span className="flex items-center gap-1.5 text-sm font-medium text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full whitespace-nowrap">
-                    <Calendar size={14} />
-                    {job.period}
-                  </span>
+    <section id="experience" style={{ padding: '6rem 1.5rem', position: 'relative' }}>
+
+      {/* Background accent */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, width: '40%', height: '40%',
+        background: 'radial-gradient(ellipse, rgba(224,53,53,0.04) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative' }}>
+
+        {/* Section header */}
+        <div style={{ marginBottom: '0.5rem' }}>
+          <span className="section-label">SECTOR_03</span>
+        </div>
+        <h2 className="section-title">// WORK_LOG</h2>
+        <div className="section-divider" style={{ maxWidth: '300px' }} />
+
+        {/* Changelog-style entries */}
+        <div style={{ position: 'relative' }}>
+          {/* Vertical timeline line */}
+          <div style={{
+            position: 'absolute',
+            left: '0',
+            top: '0',
+            bottom: '0',
+            width: '2px',
+            background: 'linear-gradient(180deg, var(--phosphor) 0%, var(--border) 60%, transparent 100%)',
+            opacity: 0.4,
+          }} />
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            {experience.map((job, idx) => (
+              <div
+                key={idx}
+                style={{
+                  paddingLeft: '2rem',
+                  paddingBottom: idx === experience.length - 1 ? 0 : '2.5rem',
+                  position: 'relative',
+                }}
+              >
+                {/* Timeline node */}
+                <div style={{
+                  position: 'absolute',
+                  left: '-5px',
+                  top: '0.75rem',
+                  width: '12px',
+                  height: '12px',
+                  backgroundColor: idx === 0 ? 'var(--phosphor)' : 'var(--surface)',
+                  border: `2px solid ${idx === 0 ? 'var(--phosphor)' : 'var(--border)'}`,
+                  boxShadow: idx === 0 ? '0 0 10px rgba(64, 150, 255, 0.6)' : 'none',
+                }} />
+
+                {/* Entry card */}
+                <div
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '2px solid var(--border)',
+                    padding: '1.25rem 1.5rem',
+                    transition: 'all 0.2s ease',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = 'var(--border-hi)';
+                    e.currentTarget.style.boxShadow = '0 0 16px rgba(64, 150, 255, 0.08)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = 'var(--border)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  {/* Entry header */}
+                  <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'baseline',
+                    gap: '0.75rem',
+                    marginBottom: '0.5rem',
+                  }}>
+                    {/* Period badge */}
+                    <span style={{
+                      fontFamily: "'Press Start 2P', monospace",
+                      fontSize: '0.45rem',
+                      color: 'var(--console)',
+                      backgroundColor: 'var(--deep)',
+                      border: '1px solid var(--border)',
+                      padding: '0.25rem 0.5rem',
+                      letterSpacing: '0.08em',
+                    }}>
+                      [{job.period}]
+                    </span>
+
+                    {/* Role */}
+                    <h3 style={{
+                      fontFamily: "'Press Start 2P', monospace",
+                      fontSize: '0.6rem',
+                      color: 'var(--star)',
+                      lineHeight: '1.8',
+                      letterSpacing: '0.05em',
+                    }}>
+                      {job.role.toUpperCase().replace(/ /g, '_')}
+                    </h3>
+                  </div>
+
+                  {/* Company as @ handle */}
+                  <div style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: '0.75rem',
+                    color: 'var(--crimson)',
+                    marginBottom: '0.875rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                  }}>
+                    <span style={{ color: 'var(--console)', fontSize: '0.8rem' }}>@</span>
+                    {job.company}
+                  </div>
+
+                  {/* Description */}
+                  <p style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: '0.73rem',
+                    color: 'var(--text-dim)',
+                    lineHeight: '1.75',
+                  }}>
+                    {job.description}
+                  </p>
+
+                  {/* Corner decoration */}
+                  <div style={{
+                    position: 'absolute', bottom: '8px', right: '8px',
+                    fontFamily: "'Press Start 2P', monospace",
+                    fontSize: '0.35rem',
+                    color: 'var(--border)',
+                    letterSpacing: '0.05em',
+                  }}>
+                    ENTRY_{String(idx + 1).padStart(2, '0')}
+                  </div>
                 </div>
-                <div className="text-slate-300 font-medium mb-3">{job.company}</div>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  {job.description}
-                </p>
               </div>
-            </div>
-          ))}
-          
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,37 +1,394 @@
 @import "tailwindcss";
 
-@layer base {
-  html {
-    font-family: 'Inter', sans-serif;
-  }
+
+/* ============================================
+   MISSION CONTROL — CSS DESIGN SYSTEM
+   MATEO ROMERO :: PORTFOLIO v2.0
+   ============================================ */
+
+:root {
+  --void:       #03080f;
+  --deep:       #060e1c;
+  --surface:    #0c1a2e;
+  --surface-hi: #112238;
+  --border:     #1a3355;
+  --border-hi:  #2a4d7a;
+  --phosphor:   #4096ff;
+  --phosphor-dim: #1a4a8a;
+  --crimson:    #e03535;
+  --crimson-dim: #6b1a1a;
+  --star:       #a8c4e0;
+  --console:    #4a6b8a;
+  --text:       #c8ddf2;
+  --text-dim:   #6b8aad;
+  --green-sys:  #00c896;
 }
 
-/* Custom fade-in animations */
+/* ============================================
+   RESET & BASE
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--void);
+  color: var(--text);
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--phosphor-dim) var(--surface);
+  image-rendering: pixelated;
+}
+
+body {
+  background-color: var(--void);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--phosphor-dim);
+  color: var(--star);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--phosphor-dim); border-radius: 0; }
+
+/* ============================================
+   PIXEL FONT UTILITY
+   ============================================ */
+
+.font-pixel {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.8;
+}
+
+/* ============================================
+   PIXEL BORDERS (8-bit box-shadow technique)
+   ============================================ */
+
+.pixel-border {
+  border: 2px solid var(--border);
+  box-shadow:
+    0 0 0 1px var(--void),
+    0 0 12px rgba(64, 150, 255, 0.08),
+    inset 0 0 0 1px var(--surface-hi);
+}
+
+.pixel-border-glow {
+  border: 2px solid var(--phosphor);
+  box-shadow:
+    0 0 0 1px var(--void),
+    0 0 16px rgba(64, 150, 255, 0.25),
+    0 0 40px rgba(64, 150, 255, 0.1),
+    inset 0 0 0 1px rgba(64, 150, 255, 0.1);
+}
+
+.pixel-border-red {
+  border: 2px solid var(--crimson);
+  box-shadow:
+    0 0 0 1px var(--void),
+    0 0 16px rgba(224, 53, 53, 0.3),
+    inset 0 0 0 1px rgba(224, 53, 53, 0.05);
+}
+
+/* ============================================
+   STAR FIELD BACKGROUND
+   ============================================ */
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.starfield::before,
+.starfield::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(168,196,224,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 23% 42%, rgba(168,196,224,0.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 35% 8%,  rgba(168,196,224,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 65%, rgba(168,196,224,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 62% 30%, rgba(168,196,224,0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 75% 55%, rgba(168,196,224,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 20%, rgba(168,196,224,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5%  78%, rgba(168,196,224,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 18% 90%, rgba(168,196,224,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 55% 85%, rgba(168,196,224,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 92%, rgba(168,196,224,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 70%, rgba(168,196,224,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 95%, rgba(168,196,224,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 83% 88%, rgba(168,196,224,0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 15% 55%, rgba(64,150,255,0.3)  0%, transparent 100%),
+    radial-gradient(1px 1px at 97% 10%, rgba(168,196,224,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 25%, rgba(168,196,224,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 67% 12%, rgba(168,196,224,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 40%, rgba(168,196,224,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 52% 50%, rgba(64,150,255,0.2)  0%, transparent 100%);
+  background-size: 100% 100%;
+}
+
+.starfield::after {
+  background-image:
+    radial-gradient(1px 1px at 7%  33%, rgba(168,196,224,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44% 18%, rgba(168,196,224,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 58% 72%, rgba(168,196,224,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 25% 60%, rgba(64,150,255,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 48%, rgba(168,196,224,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 3%  95%, rgba(168,196,224,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 73% 3%,  rgba(168,196,224,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 38% 77%, rgba(168,196,224,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 33%, rgba(168,196,224,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 12% 22%, rgba(168,196,224,0.6) 0%, transparent 100%);
+  opacity: 0.7;
+}
+
+/* ============================================
+   SCANLINES OVERLAY
+   ============================================ */
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  z-index: 1;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 @keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hud-scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes pixel-shimmer {
+  0%   { box-shadow: 0 0 8px  rgba(64, 150, 255, 0.2); }
+  50%  { box-shadow: 0 0 20px rgba(64, 150, 255, 0.45); }
+  100% { box-shadow: 0 0 8px  rgba(64, 150, 255, 0.2); }
+}
+
+@keyframes glitch-flicker {
+  0%, 92%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(64, 150, 255, 0.6); }
+  93%           { opacity: 0.8; text-shadow: 3px 0 0 var(--crimson), -3px 0 0 var(--phosphor); }
+  95%           { opacity: 1; text-shadow: -2px 0 0 var(--crimson); }
+  97%           { opacity: 0.9; text-shadow: 0 0 8px rgba(64, 150, 255, 0.6); }
+}
+
+@keyframes data-stream {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+
+.animate-blink {
+  animation: blink-cursor 1s step-start infinite;
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-pixel-shimmer {
+  animation: pixel-shimmer 3s ease-in-out infinite;
+}
+
+.animate-glitch {
+  animation: glitch-flicker 6s ease-in-out infinite;
 }
 
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
 
-/* Hide scrollbar for components if needed */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+/* ============================================
+   HUD GRID OVERLAY
+   ============================================ */
+
+.hud-grid {
+  background-image:
+    linear-gradient(rgba(64, 150, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 150, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
-.hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+
+/* ============================================
+   SECTION LABEL STYLE
+   ============================================ */
+
+.section-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: var(--crimson);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
+
+.section-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(0.75rem, 2vw, 1.1rem);
+  color: var(--star);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  text-shadow: 0 0 20px rgba(64, 150, 255, 0.4);
+}
+
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--phosphor), var(--crimson) 40%, transparent);
+  margin: 1rem 0 3rem 0;
+  box-shadow: 0 0 8px rgba(64, 150, 255, 0.4);
+}
+
+/* ============================================
+   TERMINAL WINDOW CHROME
+   ============================================ */
+
+.terminal-window {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  box-shadow: 0 0 20px rgba(64, 150, 255, 0.08);
+}
+
+.terminal-titlebar {
+  background: var(--surface-hi);
+  border-bottom: 2px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 0; /* pixel-perfect: square dots */
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.btn-primary {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--phosphor);
+  border: 2px solid var(--phosphor);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 0 12px rgba(64, 150, 255, 0.2), inset 0 0 12px rgba(64, 150, 255, 0.05);
+}
+
+.btn-primary:hover {
+  background: var(--phosphor);
+  color: var(--void);
+  box-shadow: 0 0 24px rgba(64, 150, 255, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--crimson);
+  border: 2px solid var(--crimson);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 0 12px rgba(224, 53, 53, 0.2), inset 0 0 12px rgba(224, 53, 53, 0.05);
+}
+
+.btn-secondary:hover {
+  background: var(--crimson);
+  color: var(--void);
+  box-shadow: 0 0 24px rgba(224, 53, 53, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   SKILL TAGS
+   ============================================ */
+
+.skill-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--surface);
+  color: var(--star);
+  border: 1px solid var(--border);
+  transition: all 0.15s ease;
+}
+
+.skill-tag:hover {
+  border-color: var(--phosphor);
+  color: var(--phosphor);
+  box-shadow: 0 0 8px rgba(64, 150, 255, 0.3);
+}
+
+/* ============================================
+   MISC UTILITIES
+   ============================================ */
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.text-phosphor  { color: var(--phosphor); }
+.text-crimson   { color: var(--crimson); }
+.text-star      { color: var(--star); }
+.text-console   { color: var(--console); }
+.text-dim       { color: var(--text-dim); }
+
+.bg-void        { background-color: var(--void); }
+.bg-deep        { background-color: var(--deep); }
+.bg-surface     { background-color: var(--surface); }
+
+.border-hud     { border-color: var(--border); }
+.border-phosphor{ border-color: var(--phosphor); }
+.border-crimson { border-color: var(--crimson); }
