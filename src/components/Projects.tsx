@@ -60,7 +60,7 @@ export default function Projects() {
                 }}
                 onMouseEnter={e => {
                   const el = e.currentTarget;
-                  el.style.borderColor = meta.accent === 'var(--phosphor)' ? '#4096ff' : (meta.accent.startsWith('var') ? '#e03535' : meta.accent);
+                  el.style.borderColor = meta.accent;
                   el.style.boxShadow = `0 0 24px ${meta.accent === 'var(--phosphor)' ? 'rgba(64,150,255,0.2)' : 'rgba(224,53,53,0.15)'}`;
                   el.style.transform = 'translateY(-4px)';
                 }}
