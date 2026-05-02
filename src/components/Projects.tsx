@@ -6,8 +6,18 @@ const GithubIcon = ({ size = 12 }: { size?: number }) => (
 );
 import data from '../data.json';
 
+// External link icon
+const ExternalLinkIcon = ({ size = 12 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15,3 21,3 21,9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+);
+
 // Map project names to unique accent colors and pixel icons
 const projectMeta: Record<string, { icon: string; accent: string; label: string }> = {
+  'TailorCVPro':         { icon: '📝', accent: 'var(--green-sys)', label: 'AI :: RESUME :: COVER LETTER' },
   'UTN-Conecta':         { icon: '🔗', accent: 'var(--phosphor)',  label: 'JAVA :: SPRING BOOT :: REACT' },
   'Gym Flow':            { icon: '⚡', accent: 'var(--green-sys)', label: 'MOBILE :: REST API :: DOCKER' },
   'E-store / Bookstore Backend': { icon: '⬡', accent: 'var(--crimson)',  label: 'PYTHON :: DJANGO :: SQL :: RBAC' },
@@ -141,13 +151,13 @@ export default function Projects() {
 
                   {/* Footer link */}
                   <a
-                    href={project.githubUrl}
+                    href={(project as { url?: string }).url || project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
                       fontFamily: "'Press Start 2P', monospace",
                       fontSize: '0.5rem',
-                      color: 'var(--phosphor)',
+                      color: (project as { url?: string }).url ? 'var(--green-sys)' : 'var(--phosphor)',
                       textDecoration: 'none',
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -160,8 +170,10 @@ export default function Projects() {
                     }}
                     onMouseEnter={e => {
                       const el = e.currentTarget;
-                      el.style.borderColor = 'var(--phosphor)';
-                      el.style.boxShadow = '0 0 8px rgba(64, 150, 255, 0.3)';
+                      el.style.borderColor = (project as { url?: string }).url ? 'var(--green-sys)' : 'var(--phosphor)';
+                      el.style.boxShadow = (project as { url?: string }).url 
+                        ? '0 0 8px rgba(0, 200, 150, 0.3)' 
+                        : '0 0 8px rgba(64, 150, 255, 0.3)';
                     }}
                     onMouseLeave={e => {
                       const el = e.currentTarget;
@@ -169,8 +181,8 @@ export default function Projects() {
                       el.style.boxShadow = 'none';
                     }}
                   >
-                    <GithubIcon size={12} />
-                    VIEW_SOURCE
+                    {(project as { url?: string }).url ? <ExternalLinkIcon size={12} /> : <GithubIcon size={12} />}
+                    {(project as { url?: string }).url ? 'VISIT_SITE' : 'VIEW_SOURCE'}
                   </a>
                 </div>
               </div>

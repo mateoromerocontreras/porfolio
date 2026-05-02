@@ -42,6 +42,11 @@
   ],
   "projects": [
     {
+      "name": "TailorCVPro",
+      "description": "AI-powered resume and cover letter tailoring. Paste a job description + your resume and get a perfectly matched application in seconds.",
+      "url": "https://tailorcvpro.com"
+    },
+    {
       "name": "UTN-Conecta",
       "description": "A community-focused platform for internship management. Developed the backend in Java with Spring Boot and the client-side using React. Containerized with Docker.",
       "githubUrl": "https://github.com/mateoromerocontreras/UTN_Conecta"
