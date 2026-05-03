@@ -17,7 +17,7 @@ export default function Feed() {
       backgroundColor: 'rgba(6, 14, 28, 0.5)',
       position: 'relative',
     }}>
-      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
 
         {/* Section header */}
         <div style={{ marginBottom: '0.5rem' }}>

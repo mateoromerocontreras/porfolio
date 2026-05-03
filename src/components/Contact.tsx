@@ -54,7 +54,7 @@ export default function Contact() {
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative' }}>
 
         {/* Section header */}
         <div style={{ marginBottom: '0.5rem' }}>
@@ -169,22 +169,24 @@ export default function Contact() {
           borderTop: '2px solid var(--border)',
           paddingTop: '2rem',
           display: 'flex',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '1rem',
+          justifyContent: 'center',
+          gap: '0.75rem',
+          textAlign: 'center',
         }}>
           <span style={{
             fontFamily: "'Press Start 2P', monospace",
-            fontSize: '0.45rem',
+            fontSize: '0.4rem',
             color: 'var(--console)',
             letterSpacing: '0.1em',
+            wordBreak: 'break-word',
           }}>
-            © {new Date().getFullYear()} MATEO_ROMERO :: CÓRDOBA, ARG
+            © {new Date().getFullYear()} MATEO_ROMERO :: CORDOBA, ARG
           </span>
           <span style={{
             fontFamily: "'Press Start 2P', monospace",
-            fontSize: '0.4rem',
+            fontSize: '0.35rem',
             color: 'var(--border)',
             letterSpacing: '0.1em',
           }}>

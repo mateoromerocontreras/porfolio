@@ -13,7 +13,7 @@ export default function Experience() {
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative' }}>
 
         {/* Section header */}
         <div style={{ marginBottom: '0.5rem' }}>

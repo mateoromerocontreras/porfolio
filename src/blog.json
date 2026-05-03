@@ -1,5 +1,13 @@
 [
   {
+    "id": 0,
+    "date": "April 30, 2026",
+    "title": "Launched TailorCVPro - AI Resume Tailoring",
+    "content": "Just shipped TailorCVPro, an AI-powered tool that helps you tailor your resume and cover letter to any job description in seconds. Paste a job description + your resume and get a perfectly matched application. Built with modern AI integration and a focus on user experience.",
+    "link": "https://tailorcvpro.com",
+    "linkText": "Try TailorCVPro"
+  },
+  {
     "id": 1,
     "date": "April 19, 2026",
     "title": "Welcome to my new Portfolio!",
